@@ -68,7 +68,9 @@ module Cucumber
       end
 
       def define_steps
-        return unless step_defs = self.class.step_defs
+        step_defs = self.class.step_defs
+
+        return unless step_defs
         runtime.support_code.ruby
         dsl = Object.new
         dsl.extend RbSupport::RbDsl
