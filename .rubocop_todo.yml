@@ -26,12 +26,6 @@ Lint/AssignmentInCondition:
     - 'lib/cucumber/runtime/support_code.rb'
     - 'spec/cucumber/formatter/spec_helper.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/DeprecatedClassMethods:
-  Exclude:
-    - 'lib/cucumber/project_initializer.rb'
-
 # Offense count: 2
 Lint/DuplicateMethods:
   Exclude:
