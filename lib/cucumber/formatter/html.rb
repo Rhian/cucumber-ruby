@@ -40,7 +40,7 @@ module Cucumber
       def embed(src, mime_type, label)
         case(mime_type)
         when /^image\/(png|gif|jpg|jpeg)/
-          unless File.file?(src) or src =~ /^data:image\/(png|gif|jpg|jpeg);base64,/
+          unless File.file?(src) || src =~ /^data:image\/(png|gif|jpg|jpeg);base64,/
             type = mime_type =~ /;base[0-9]+$/ ? mime_type : mime_type + ';base64'
             src = 'data:' + type + ',' + src
           end
@@ -53,7 +53,7 @@ module Cucumber
       def embed_image(src, label)
         id = "img_#{@img_id}"
         @img_id += 1
-        if @io.respond_to?(:path) and File.file?(src)
+        if @io.respond_to?(:path) && File.file?(src)
           out_dir = Pathname.new(File.dirname(File.absolute_path(@io.path)))
           src = Pathname.new(File.absolute_path(src)).relative_path_from(out_dir)
         end
@@ -254,7 +254,7 @@ module Cucumber
 
       def after_steps(_steps)
         print_messages
-        @builder << '</ol>' if @in_background or @in_scenario_outline
+        @builder << '</ol>' if @in_background || @in_scenario_outline
       end
 
       def before_step(step)
@@ -422,7 +422,7 @@ module Cucumber
       end
 
       def after_test_case(_test_case, result)
-        if result.failed? and not @scenario_red
+        if result.failed? && !@scenario_red
           set_scenario_color_failed
         end
       end
@@ -460,7 +460,7 @@ module Cucumber
       end
 
       def set_scenario_color(status)
-        if status.nil? or status == :undefined or status == :pending
+        if status.nil? || status == :undefined || status == :pending
           set_scenario_color_pending
         end
         if status == :failed
@@ -475,7 +475,7 @@ module Cucumber
           scenario_or_background = @in_background ? 'background' : 'scenario'
           @builder.text!("makeRed('#{scenario_or_background}_#{@scenario_number}');") unless @scenario_red
           @scenario_red = true
-          if @options[:expand] and @inside_outline
+          if @options[:expand] && @inside_outline
             @builder.text!("makeRed('#{scenario_or_background}_#{@scenario_number}_#{@outline_row}');")
           end
         end
