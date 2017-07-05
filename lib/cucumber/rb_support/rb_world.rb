@@ -104,7 +104,7 @@ module Cucumber
         if block_given?
           begin
             yield
-          rescue StandardError
+          rescue Exception
             raise Pending, message
           end
           raise Pending, "Expected pending '#{message}' to fail. No Error was raised. No longer pending?"
