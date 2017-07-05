@@ -151,7 +151,7 @@ module Cucumber
       def feature_name(keyword, name)
         lines = name.split(/\r?\n/)
         return if lines.empty?
-        @builder.h2 do |h2|
+        @builder.h2 do |_h2|
           @builder.span(keyword + ': ' + lines[0], :class => 'val')
         end
         @builder.p(:class => 'narrative') do
@@ -178,7 +178,7 @@ module Cucumber
 
       def background_name(keyword, name, _file_colon_line, _source_indent)
         @listing_background = true
-        @builder.h3(:id => "background_#{@scenario_number}") do |h3|
+        @builder.h3(:id => "background_#{@scenario_number}") do |_h3|
           @builder.span(keyword, :class => 'keyword')
           @builder.text!(' ')
           @builder.span(name, :class => 'val')
@@ -342,7 +342,7 @@ module Cucumber
 
       def doc_string(string)
         return if @hide_this_step
-        @builder.pre(:class => 'val') do |pre|
+        @builder.pre(:class => 'val') do |_pre|
           @builder << h(string).gsub("\n", '&#x000A;')
         end
       end
@@ -491,7 +491,7 @@ module Cucumber
 
       def build_step(keyword, step_match, _status)
         step_name = step_match.format_args(lambda{|param| %{<span class="param">#{param}</span>}})
-        @builder.div(:class => 'step_name') do |div|
+        @builder.div(:class => 'step_name') do |_div|
           @builder.span(keyword, :class => 'keyword')
           @builder.span(:class => 'step val') do |name|
             name << h(step_name).gsub(/&lt;span class=&quot;(.*?)&quot;&gt;/, '<span class="\1">').gsub(/&lt;\/span&gt;/, '</span>')
@@ -505,7 +505,7 @@ module Cucumber
           end
         end
 
-        @builder.div(:class => 'step_file') do |div|
+        @builder.div(:class => 'step_file') do |_div|
           @builder.span do
             @builder << step_file
           end

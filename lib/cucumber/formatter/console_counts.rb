@@ -45,7 +45,7 @@ module Cucumber
         counts = [:failed, :skipped, :undefined, :pending, :passed].map { |status|
           count = summary.total(status)
           [status, count]
-        }.select { |status, count|
+        }.select { |_status, count|
           count > 0
         }.map { |status, count|
           format_string("#{count} #{status}", status)
